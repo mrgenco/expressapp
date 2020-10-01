@@ -2,6 +2,9 @@ const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
 
+// Init App
+const app = express();
+
 mongoose.connect('mongodb://localhost/expressdb');
 let db = mongoose.connection;
 
@@ -15,8 +18,6 @@ db.on('error', function (err) {
     console.log(err);
 })
 
-// Init App
-const app = express();
 
 // Bring in Models
 let Article = require('./models/article');
