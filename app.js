@@ -31,6 +31,8 @@ app.use(express.urlencoded({ extended: false }));
 //Used to parse JSON bodies
 app.use(express.json()); 
 
+app.use(express.static(path.join(__dirname, 'public')));
+
 // Home Route
 app.get('/', function (req, res) {
     Article.find({}, function (err, articles) {
@@ -51,7 +53,6 @@ app.get('/articles/add', function (req, res) {
         title: 'JCR - ER Add Article'
     });
 });
-
 app.post('/articles/add', function(req,res){
     let article = new Article();
     article.title = req.body.title;
